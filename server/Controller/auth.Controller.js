@@ -5,8 +5,6 @@ const User =require("../Model/user.Model")
 
 const jwt = require('jsonwebtoken');
 
-
-
 const signup=(req,res)=>{
 
     const {name,email,password,pic} = req.body 
@@ -64,7 +62,6 @@ const signup=(req,res)=>{
     })
 }
   
-
 
 const signin=(req,res)=>{
 
