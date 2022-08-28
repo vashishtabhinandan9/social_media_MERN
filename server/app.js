@@ -8,8 +8,8 @@ const database=require("./Database/db");
 
 const indexrouter=require("./Routes/index.Router")
 
-app.use(express.json());
 
+app.use(express.json());
 
 app.use("/",indexrouter);
 
