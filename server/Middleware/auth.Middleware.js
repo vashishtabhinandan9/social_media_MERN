@@ -27,10 +27,14 @@ const isLoggedIn=(req,res,next)=>{
         const {_id} = payload
         User.findById(_id).then(userdata=>{
             req.user = userdata//now req.user has everything of our looged in user so we can use its data 
-           // next()
-           //res.json("heloo")
+           next();
+           //res.json("hello")
         })
-        next()
+       // next() //putting next() out findbyid will require sometimte so due to this we
+       // will fget user data afeter some delay we 
+       //want it once the aearch is doent do we write next() inside
+
+
         
     })
 
