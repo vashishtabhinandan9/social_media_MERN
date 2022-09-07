@@ -12,45 +12,54 @@ import {IoPersonCircle} from "react-icons/io5"
 const NavSm = () => {
   return (
     <>
-      <div className="text-black flex py-4   items-center justify-between">
+      <div className="navsmall w-full text-black flex gap-16  items-center justify-between py-4 border-2 border-gray-800 drop-shadow-2xl ">
+      <div className=" title ">
        <Link to="/">{/**  /myfollowingpost */}
-        <div className="w-44">
-          <h2 className="ml-4  text-xl font-bold">Instagram</h2>
+       
+          <h2 className=" ml-4 text-xl font-bold">Instagram</h2>
+          </Link> 
         </div>
-        </Link> 
+        
         
 
-        <div className="icons flex items-center flex-1 w-44 float-left  gap-4">
-
+        <div className="icons mr-2 items-center  flex  gap-4">
+          <div className="w-8 h-8 cursor-pointer">
           <Link to="/"> {/**  on click search functiion */}
-          <div className="w-8 h-8 cursor-pointer">
             <BiSearch className="w-full h-full" />
+            </Link>
             </div>
-          </Link>
+         
 
-          <Link to="/">{/**  /myfollowingpost */}
+          
           <div className="w-8 h-8 cursor-pointer">
+          <Link to="/">{/**  /myfollowingpost */}
           <TbHome className="w-full h-full" />
-          </div>
           </Link>
-       
-        <Link to="/create">
+          </div>
+          
+       <div>
+       <Link to="/create">
         <div className="w-8 h-6  border-2 border-gray-800 rounded-lg grid place place-content-center cursor-pointer" >
           <TbPlus className="w-full  h-full  " />
         </div>
         </Link>
+       </div>
+       
         
+       
+        <div className="w-8 h-8 cursor-pointer">
         <Link to="/">{/** all post by all users*/}
-        <div className="w-8 h-8 cursor-pointer">
           <TbCompass className="w-full h-full" />
+          </Link>
         </div>
-        </Link>
+       
         
-        <Link to="/profile">{/**  /myprofile */}
+      
         <div className="w-8 h-8 cursor-pointer">
+        <Link to="/profile">{/**  /myprofile */}
           <IoPersonCircle className="w-full h-full" />
-        </div>
         </Link>
+        </div>
        
         
         </div>
@@ -71,6 +80,7 @@ const NavMd = () => {
     </div>
   );
 };
+
 const NavLg = () => {
   return (
     <>
