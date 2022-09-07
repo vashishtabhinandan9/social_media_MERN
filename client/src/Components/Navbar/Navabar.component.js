@@ -1,22 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import {
-  BiChevronRight,
-  BiSearch,
-  BiMenu,
-  BiChevronDown,
+  BiSearch
 } from "react-icons/bi";
 import {TbHome,TbPlus,TbCompass} from "react-icons/tb"
 import {IoPersonCircle} from "react-icons/io5"
 
-const NavSm = () => {
+const Nav = () => {
   return (
     <>
       <div className="navsmall w-full text-black flex gap-16  items-center justify-between py-4 border-2 border-gray-800 drop-shadow-2xl ">
-      <div className=" title ">
+      <div className=" title ml-4">
        <Link to="/">{/**  /myfollowingpost */}
        
-          <h2 className=" ml-4 text-xl font-bold">Instagram</h2>
+          <h2 className="  text-xl font-bold">Instagram</h2>
           </Link> 
         </div>
         
@@ -60,6 +57,12 @@ const NavSm = () => {
           <IoPersonCircle className="w-full h-full" />
         </Link>
         </div>
+
+        <div className="border-2 rouded-lg mr-2 text-white cursor-pointer ">
+          <button className="p-2 bg-red-500">
+            LOGOUT
+          </button>
+        </div>
        
         
         </div>
@@ -68,56 +71,6 @@ const NavSm = () => {
     </>
   );
 };
-const NavMd = () => {
-  return (
-    <div className="w-full flex items-center gap-3 bg-white px-3 py-2 rounded-md">
-      <BiSearch />
-      <input
-        type="search"
-        className="w-full bg-transparent border-none focus:outline-none"
-        placeholder="Search for movies, events, Plays, Sports and Activities."
-      />
-    </div>
-  );
-};
-
-const NavLg = () => {
-  return (
-    <>
-      <div className="container mx-auto px-4 flex items-center justify-between">
-        <div className="flex items-center w-1/2 gap-3">
-          <div className="w-20 h-20">
-          <img src="https://in.bmscdn.com/webin/common/icons/logo.svg" 
-               alt="logo" 
-               className="w-full h-full " 
-          />
-          </div>
-           
-          <div className="w-full flex items-center gap-3 bg-white px-3 py-2 rounded-md">
-            <BiSearch />
-            <input
-              type="search"
-              className="w-full bg-transparent border-none focus:outline-none"
-              placeholder="Search for movies, events, Plays, Sports and Activities."
-            />
-          </div>
-        </div>
-        <div className="flex items-center gap-3">
-          <span className="text-gray-200 text-xs flex items-center cursor-pointer hover:text-white">
-            NCR <BiChevronDown />
-          </span>
-          <button className="bg-red-600 text-white px-2 py-1 text-sm rounded">
-            Sign in
-          </button>
-          <div className="w-8 h-8 text-white">
-            <BiMenu className="w-full h-full" />
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
-
 
 const Navbar = () => {
   return (
@@ -125,8 +78,9 @@ const Navbar = () => {
       <nav className="bg-white w-full   sticky top-0">
         <div className="md:hidden">{/**this statement measn if widht goes greater than md(768) than hide me */}
           {/* Mobile screen less than 768px <NavSm /> // if with is less than 768 then hide middel elment and render small element*/}
-          <NavSm />
+          <Nav />
         </div>
+        {/** */}
         <div className="hidden md:flex lg:hidden">{/**if width grater than md(768) then display=flex  
          * else display is hidden and for large(1024 display hidden)
          * do only between 768-1024 displlay = flex else display=hidden display is a css property
@@ -135,9 +89,9 @@ const Navbar = () => {
         {/**<NavMd /> */} 
         
         </div>
-        <div className="hidden m-auto w-10/12 lg:flex">
+        <div className="hidden m-auto w-10/12 md:flex">
           {/* Large screen for greater than 1024 */}
-          <NavLg />
+          <Nav />
         </div>
       </nav>
     </>
