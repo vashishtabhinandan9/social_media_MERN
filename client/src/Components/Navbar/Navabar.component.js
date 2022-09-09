@@ -6,23 +6,24 @@ import {
 import {TbHome,TbPlus,TbCompass} from "react-icons/tb"
 import {IoPersonCircle} from "react-icons/io5"
 
+
 const Nav = () => {
   return (
     <>
-      <div className="navsmall w-full text-black flex gap-16  items-center justify-between py-4 border-2 border-gray-800 drop-shadow-2xl ">
+      <div className="navsmall w-full text-black flex gap-16  items-center justify-between py-4 border-2 border-gray-800  drop-shadow-2xl ">
       <div className=" title ml-4">
        <Link to="/">{/**  /myfollowingpost */}
        
-          <h2 className="  text-xl font-bold">Instagram</h2>
+          <h2 className=" font-grandhotel text-4xl ">Instagram</h2>
           </Link> 
         </div>
         
         
 
-        <div className="icons mr-2 items-center  flex  gap-4">
-          <div className="w-8 h-8 cursor-pointer">
+        <div className="icons mr-2 items-center h-full  flex  gap-4">
+          <div className=" cursor-pointer">
           <Link to="/"> {/**  on click search functiion */}
-            <BiSearch className="w-full h-full" />
+            <BiSearch className="w-8 h-8" />
             </Link>
             </div>
          
@@ -36,7 +37,7 @@ const Nav = () => {
           
        <div>
        <Link to="/create">
-        <div className="w-8 h-6  border-2 border-gray-800 rounded-lg grid place place-content-center cursor-pointer" >
+        <div className="w-7 h-7  border-2 border-gray-800 rounded-lg grid place place-content-center cursor-pointer" >
           <TbPlus className="w-full  h-full  " />
         </div>
         </Link>
@@ -58,10 +59,13 @@ const Nav = () => {
         </Link>
         </div>
 
-        <div className="border-2 rouded-lg mr-2 text-white cursor-pointer ">
-          <button className="p-2 bg-red-500">
+        <div className="border-2 rouded-lg mr-2 text-white cursor-pointer  ">
+          <button className="p-2 bg-red-500 hover:drop-shadow-xl">
             LOGOUT
           </button>
+      
+     
+    
         </div>
        
         
@@ -75,8 +79,9 @@ const Nav = () => {
 const Navbar = () => {
   return (
     <>
-      <nav className="bg-white w-full   sticky top-0">
-        <div className="md:hidden">{/**this statement measn if widht goes greater than md(768) than hide me */}
+    
+      <nav className="bg-white w-full  sticky top-0">
+        <div className="md:hidden  ">{/**this statement measn if widht goes greater than md(768) than hide me */}
           {/* Mobile screen less than 768px <NavSm /> // if with is less than 768 then hide middel elment and render small element*/}
           <Nav />
         </div>
@@ -89,8 +94,8 @@ const Navbar = () => {
         {/**<NavMd /> */} 
         
         </div>
-        <div className="hidden m-auto w-10/12 md:flex">
-          {/* Large screen for greater than 1024 */}
+        <div className="hidden m-auto w-10/12   md:flex">
+          {/* scrren greater than 768 */}
           <Nav />
         </div>
       </nav>

@@ -1,5 +1,12 @@
+/*instagram logo font = grandhotel*/
+@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
+
 @import "tailwindcss/base";
 
 @import "tailwindcss/components";
 
 @import "tailwindcss/utilities";
+
+body{
+    background-color:rgba(250, 250, 245, 0.968);
+ }

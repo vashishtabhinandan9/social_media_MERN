@@ -2,19 +2,20 @@ import Navbar from "./Components/Navbar/Navabar.component";
 import { Routes,Route } from "react-router-dom";
 import Home from "./Pages/Home.page";
 import Profile from "./Pages/Profile.page";
-import Signin from "./Pages/Signin.page";
-import Signup from "./Pages/Signup.page";
+import Signin from "./Pages/Register/Signin.page";
+import Signup from "./Pages/Register/Signup.page";
 
+
+const user=0;
 function App() {
   return (
    <>
    
   
 
-  <Navbar/>
-  <h1 className="text-3xl text-amber-500   underline underline-offset-1">
-      Hello world
-    </h1>
+  {user && <Navbar/>} 
+
+ 
 <Routes>
    <Route exact path="/" element={<Home/>}/>
    <Route path="/signin" element={ <Signin />}/>
@@ -37,9 +38,14 @@ function App() {
         <NewPassword />
     </Route>
      */
+    
    }
   
 </Routes>
+
+<h1 className="text-3xl text-amber-500   underline underline-offset-1">
+      Hello world
+    </h1>
 
    </>
   

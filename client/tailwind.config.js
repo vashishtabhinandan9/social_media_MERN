@@ -18,7 +18,10 @@ module.exports = {
           800: '#262626',
           900: '#0d0d0d',
         }
-      }
+      },
+      fontFamily  :{
+        grandhotel: ['Grand Hotel'],
+      },
     },
   },
   plugins: [],
