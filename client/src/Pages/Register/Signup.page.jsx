@@ -2,12 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import "./Signup.page.css"
 
-export default function Signup() {
-  return (
-    
-    
+
+
+export default function Signup(){
+return(
     <>
-      <div className='register'>
+    <main>
+     <div className='register'>
         <span className='title'> Viraly</span>
         <h3 className='instruction'>Sign up to see photos and videos from your friends.</h3>
         <form action="" className='form'>
@@ -34,6 +35,11 @@ export default function Signup() {
          
         </div>
       </div>
+     </main>
+    </>
+  )  
+}
+
 
 
 
@@ -67,8 +73,3 @@ export default function Signup() {
    
       {/*error && <span style={{color:"red", marginTop:"10px"}}>Something went wrong!</span>}  
   </div> */}
-   
-   </>
-    
-  )
-}

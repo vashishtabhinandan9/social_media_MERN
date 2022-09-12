@@ -6,96 +6,84 @@ import {
 import {TbHome,TbPlus,TbCompass} from "react-icons/tb"
 import {IoPersonCircle} from "react-icons/io5"
 
-
+//
 const Nav = () => {
   return (
     <>
-      <div className="navsmall w-full text-black flex gap-16  items-center justify-between py-4 border-2 border-gray-800  drop-shadow-2xl ">
-      <div className=" title ml-4">
-       <Link to="/">{/**  /myfollowingpost */}
-       
-          <h2 className=" font-grandhotel text-4xl ">Instagram</h2>
-          </Link> 
-        </div>
-        
-        
+    <span className="w-full gap-4 flex-nowrap bg-white border-2 flex justify-around items-center border-green-500">
+           
+            <span  className="title font-meduim font-grandhotel text-8xl ">
+            <Link to="/">{/**  /myfollowingpost */}
+            Viraly
+              </Link> 
+            </span>
+           
 
-        <div className="icons mr-2 items-center h-full  flex  gap-4">
-          <div className=" cursor-pointer">
-          <Link to="/"> {/**  on click search functiion */}
-            <BiSearch className="w-8 h-8" />
-            </Link>
-            </div>
+            <ul className="icons items-center flex  w-auto border-2 border-indigo-200 gap-2">
+              <li className=" cursor-pointer">
+               <Link to="/"> {/**  on click search functiion */}
+                <BiSearch className="w-8 h-8" />
+              </Link>
+              </li>
+
+              <li className="w-8 h-8 cursor-pointer">
+             <Link to="/">{/**  /myfollowingpost */}
+              <TbHome className="w-full h-full" />
+              </Link>
+              </li>
+
+                
+                <Link to="/create">
+                 <li className="w-7 h-7  border-2 border-gray-800 rounded-lg grid place place-content-center cursor-pointer" >
+                  <TbPlus className="w-full  h-full  " />
+                  </li>
+                </Link>
+            
          
-
-          
-          <div className="w-8 h-8 cursor-pointer">
-          <Link to="/">{/**  /myfollowingpost */}
-          <TbHome className="w-full h-full" />
+          <li className="w-8 h-8 cursor-pointer">
+          <Link to="/">{/** all post by all users*/}
+            <TbCompass className="w-full h-full" />
+            </Link>
+          </li>
+         
+          <li className="w-8 h-8 cursor-pointer ">
+          <Link to="/profile">{/**  /myprofile */}
+            <IoPersonCircle className="w-full h-full" />
           </Link>
-          </div>
-          
-       <div>
-       <Link to="/create">
-        <div className="w-7 h-7  border-2 border-gray-800 rounded-lg grid place place-content-center cursor-pointer" >
-          <TbPlus className="w-full  h-full  " />
-        </div>
-        </Link>
-       </div>
-       
-        
-       
-        <div className="w-8 h-8 cursor-pointer">
-        <Link to="/">{/** all post by all users*/}
-          <TbCompass className="w-full h-full" />
-          </Link>
-        </div>
-       
-        
-      
-        <div className="w-8 h-8 cursor-pointer">
-        <Link to="/profile">{/**  /myprofile */}
-          <IoPersonCircle className="w-full h-full" />
-        </Link>
-        </div>
-
-        <div className="border-2 rouded-lg mr-2 text-white cursor-pointer  ">
-          <button className="p-2 bg-red-500 hover:drop-shadow-xl">
-            LOGOUT
-          </button>
-      
-     
-    
-        </div>
-       
-        
-        </div>
-        
-      </div>
+          </li>
+  
+          <li className="border-2 rouded-lg text-white cursor-pointer p-2 bg-red-500 hover:drop-shadow-xl ">
+                LOGOUT
+          </li>
+           
+         </ul>
+    </span>
     </>
-  );
-};
+  )
+}
 
 const Navbar = () => {
   return (
     <>
-    
-      <nav className="bg-white w-full  sticky top-0">
-        <div className="md:hidden  ">{/**this statement measn if widht goes greater than md(768) than hide me */}
-          {/* Mobile screen less than 768px <NavSm /> // if with is less than 768 then hide middel elment and render small element*/}
+   
+      <nav className=" w-full sticky top-0">
+        <div className="md:hidden w-auto ">{/**this statement measn if widht goes greater than md(768) than hide me */}
+          {/* Mobile screen width less than 768px <NavSm /> // if with is less than 768 then hide middel elment and render small element*/}
           <Nav />
         </div>
         {/** */}
-        <div className="hidden md:flex lg:hidden">{/**if width grater than md(768) then display=flex  
+        <div className="hidden w-11/12 m-auto md:flex lg:hidden">{/**if width grater than md(768) then display=flex  
          * else display is hidden and for large(1024 display hidden)
          * do only between 768-1024 displlay = flex else display=hidden display is a css property
          *  */}
           {/* Medium/Tab screen {768 to 1024} if with is less than 1024 meduim render */}
         {/**<NavMd /> */} 
+        <Nav />
+        
         
         </div>
-        <div className="hidden m-auto w-10/12   md:flex">
-          {/* scrren greater than 768 */}
+        <div className="hidden w-11/12 m-auto  lg:flex">
+          {/*  laptoo and desktop screen greater than 1024 */}
           <Nav />
         </div>
       </nav>
