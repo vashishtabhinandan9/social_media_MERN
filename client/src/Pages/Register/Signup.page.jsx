@@ -7,7 +7,7 @@ import "./Signup.page.css"
 export default function Signup(){
 return(
     <>
-    <main>
+   
      <div className='register'>
         <span className='title'> Viraly</span>
         <h3 className='instruction'>Sign up to see photos and videos from your friends.</h3>
@@ -27,6 +27,7 @@ return(
       />
 
       <button className="registerButton" type='submit'>Register</button>
+      
         </form>
 
         <div className='tologin'>
@@ -35,7 +36,7 @@ return(
          
         </div>
       </div>
-     </main>
+    
     </>
   )  
 }

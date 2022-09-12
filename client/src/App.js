@@ -6,7 +6,7 @@ import Signin from "./Pages/Register/Signin.page";
 import Signup from "./Pages/Register/Signup.page";
 
 
-const user=0;
+const user=1;
 function App() {
   return (
    <>

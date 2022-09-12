@@ -19,7 +19,7 @@ const Nav = () => {
             </span>
            
 
-            <ul className="icons items-center flex  w-auto border-2 border-indigo-200 gap-2">
+            <ul className="icons items-center flex  w-auto border-2 border-indigo-200 gap-3">
               <li className=" cursor-pointer">
                <Link to="/"> {/**  on click search functiion */}
                 <BiSearch className="w-8 h-8" />
@@ -52,9 +52,9 @@ const Nav = () => {
           </Link>
           </li>
   
-          <li className="border-2 rouded-lg text-white cursor-pointer p-2 bg-red-500 hover:drop-shadow-xl ">
+          <button  className="border-2 rouded-lg text-white cursor-pointer p-2 bg-red-500 hover:drop-shadow-xl ">
                 LOGOUT
-          </li>
+          </button>
            
          </ul>
     </span>
