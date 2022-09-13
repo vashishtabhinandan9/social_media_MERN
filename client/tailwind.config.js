@@ -7,8 +7,8 @@ module.exports = {
     extend: {
       colors:{
         proj: {
-          50: '#f2f2f2',
-          100: '#d9d9d9',
+          50: '#FFFFFF',//content-color
+          100: '#FAFAFA',//backgroound-color
           200: '#bfbfbf',
           300: '#a6a6a6',
           400: '#8c8c8c',

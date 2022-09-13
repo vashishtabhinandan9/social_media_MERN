@@ -10,7 +10,8 @@ import {IoPersonCircle} from "react-icons/io5"
 const Nav = () => {
   return (
     <>
-    <span className="w-full gap-4 flex-nowrap bg-white border-2 flex justify-around items-center border-green-500">
+    <span 
+    className="w-full gap-4 flex-nowrap bg-white border-2 flex justify-around items-center border-green-500 drop">
            
             <span  className="title font-meduim font-grandhotel text-8xl ">
             <Link to="/">{/**  /myfollowingpost */}

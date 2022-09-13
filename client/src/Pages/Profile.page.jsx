@@ -9,7 +9,7 @@ images.map((i)=>{
   return(
   < > 
   <div className=' object-cover cursor-pointer  '>
-  <img className="" src={i.src} alt={i.alt}/>
+  <img key={i.key} className="rounded-md" src={i.src} alt={i.alt}/>
   </div>
      
   </>

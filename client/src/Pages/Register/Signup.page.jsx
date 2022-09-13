@@ -7,7 +7,7 @@ import "./Signup.page.css"
 export default function Signup(){
 return(
     <>
-   
+
      <div className='register'>
         <span className='title'> Viraly</span>
         <h3 className='instruction'>Sign up to see photos and videos from your friends.</h3>
