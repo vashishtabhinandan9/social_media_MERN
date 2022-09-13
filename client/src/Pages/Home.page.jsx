@@ -11,7 +11,7 @@ const Homecard=()=>{
   images.map((item)=>{
     return(
       <>
-       <div className='home-card border-2 w-5/12 my-4 m-auto rounded-md border-gray-800 bg-proj-50'>
+       <div className='home-card border-2 w-full  md:w-5/12 my-4 m-auto rounded-md border-gray-800 bg-proj-50'>
       <span className='header flex justify-between items-center my-2'>
         <h5 className='cursor-pointer ml-4 text-xl'>
         <Link to="/profile">
@@ -23,7 +23,7 @@ const Homecard=()=>{
       </span>
 
       <div className="card-image flex-auto my-1">
-          <img  className='object-fit w-full' key={item.key} src={item.src} alt={item.alt}/>
+          <img  className='object-fit w-full h-80 ' key={item.key} src={item.src} alt={item.alt}/>
       </div>
 
        <div className="card-content my-2 ml-4 flex flex-col gap-2">
@@ -68,9 +68,34 @@ const Homecard=()=>{
 export default function Home() {
   return (
     <>
-    <div className='w-10/12 m-auto'>
-    <Homecard/>
-    </div>
+
+<main className=" w-full ">
+        <div className="smscreen md:hidden grid-rows-3 w-auto ">{/**this statement measn if widht goes greater than md(768) than hide me */}
+          {/* Mobile screen width less than 768px <NavSm /> // if with is less than 768 then hide middel elment and render small element*/}
+          {/* <Nav /> */}
+          <Homecard/>
+          
+        </div>
+        {/** */}
+        
+        <div className="hidden w-full m-auto md:hidden">{/**if width grater than md(768) then display=flex  
+         * else display is hidden and for large(1024 display hidden)
+         * do only between 768-1024 displlay = flex else display=hidden display is a css property
+         *  */}
+          {/* Medium/Tab screen {768 to 1024} if with is less than 1024 meduim render */}
+        {/**<NavMd /> */} 
+        {/* <Nav /> */}
+        
+        
+        </div>
+        
+        <div className="lgscreen hidden w-10/12 m-auto md:block">
+          {/*  laptoo and desktop screen greater than 1024 */}
+          {/* <Nav /> */}
+          <Homecard/>
+        </div>
+      </main>
+  
      
   </>
   )
