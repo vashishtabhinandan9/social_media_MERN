@@ -72,7 +72,7 @@ const Navbar = () => {
           <Nav />
         </div>
         {/** */}
-        <div className="hidden w-11/12 m-auto md:flex lg:hidden">{/**if width grater than md(768) then display=flex  
+        <div className="hidden w-full m-auto md:flex lg:hidden">{/**if width grater than md(768) then display=flex  
          * else display is hidden and for large(1024 display hidden)
          * do only between 768-1024 displlay = flex else display=hidden display is a css property
          *  */}
@@ -82,7 +82,7 @@ const Navbar = () => {
         
         
         </div>
-        <div className="hidden w-11/12 m-auto  lg:flex">
+        <div className="hidden w-full  lg:flex">
           {/*  laptoo and desktop screen greater than 1024 */}
           <Nav />
         </div>
