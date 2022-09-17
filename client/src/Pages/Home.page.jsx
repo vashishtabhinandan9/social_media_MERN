@@ -23,7 +23,7 @@ const Homecard=()=>{
       </span>
 
       <div className="card-image flex-auto my-1">
-          <img  className='object-fit w-full h-80 ' key={item.key} src={item.src} alt={item.alt}/>
+          <img  className='object-fit w-full h-96 ' key={item.key} src={item.src} alt={item.alt}/>
       </div>
 
        <div className="card-content my-2 ml-4 flex flex-col gap-2">

@@ -4,6 +4,7 @@ import Home from "./Pages/Home.page";
 import Profile from "./Pages/Profile.page";
 import Signin from "./Pages/Register/Signin.page";
 import Signup from "./Pages/Register/Signup.page";
+import CreatePost from "./Pages/Create.page";
 
 
 const user=1;
@@ -21,7 +22,7 @@ function App() {
    <Route path="/signin" element={ <Signin />}/>
    <Route path="/signup" element={<Signup/>}/>
    <Route exact path="/profile" element={<Profile/>}/>
-   <Route path="/create" element={/*<CreatePost/>*/<h1>crealte</h1>}/>
+   <Route path="/create" element={<CreatePost/>}/>
 
    {
     /**
