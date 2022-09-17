@@ -1,10 +1,18 @@
 import React from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import "./Signup.page.css"
 
 
 
 export default function Signup(){
+  const [name,setName] = useState("")
+  const [password,setPassword] = useState("")
+  const [email,setEmail] = useState("")
+  const [image,setImage] = useState("")
+  const [url,setUrl] = useState(undefined)
+  console.log(email)
+  console.log(name)
 return(
     <>
 
@@ -14,16 +22,24 @@ return(
         <form action="" className='form'>
 
         <label className='label'>Username</label>
-      <input className="registerInput" type="text" placeholder="Enter your username..."
-      //onChange={e=>setUsername(e.target.value)}
+      <input className="registerInput" 
+      type="text" 
+      placeholder="Enter your username..."
+      
+      onChange={e=>setName(e.target.value)}
       />
       <label className='label'>Email</label>
-      <input className="registerInput" type="text" placeholder="Enter your email..."
-      // onChange={e=>setEmail(e.target.value)}
+      <input className="registerInput" 
+       type="text"
+       placeholder="Enter your email..."
+
+       onChange={e=>setEmail(e.target.value)}
       />
       <label className='label'>Password</label>
-      <input className="registerInput" type="password" placeholder="Enter your password..."
-      //onChange={e=>setPassword(e.target.value)}
+      <input className="registerInput" 
+      type="password" 
+      placeholder="Enter your password..."
+      onChange={e=>setPassword(e.target.value)}
       />
 
       <button className="registerButton" type='submit'>Register</button>
