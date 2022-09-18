@@ -18,17 +18,26 @@ export default function Signup(){
 
 const  handleSubmit=async(e)=>{
   e.preventDefault();//this prevent the default code
+
+
+  if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
+    console.log("invalid email due to regex ")//   
+    // M.toast({html: "invalid email",classes:"#c62828 red darken-3"})
+    return
+}
+
  try {
   const res=await axios.post("/signup",{
-    "name":name,
-    "email":email,
-    "password":password
+    name,
+    email,
+    password
   });
 
   if(res.data){
     //if success then replace it with signin and 
     //pop up message that signin invalid
-    console.log(res.data);
+    console.log(res.data.message);//data is retrunded noramlly by browser .if there is some
+    // field inside data then you have to do res.data.fieldname
     console.log(res)
     console.log("hello")
    navigate("/signin")
@@ -41,7 +50,10 @@ const  handleSubmit=async(e)=>{
  } catch (error) {
   console.log("inside catch")
   console.log(error)
-  console.log(error.response.data)//this is the message which coems when error occurs
+  console.log(error.response.data)//this is the message which coems when error occurs// put this in animation
+  //put 
+  //pop up message that signup invalid
+    //error.response.data=>this is the user message put it in animation
  }
   
  }
@@ -54,19 +66,22 @@ return(
         <form action="" className='form'>
 
         <label className='label'>Username</label>
-      <input className="registerInput  required" 
+      <input className="registerInput"
+      required 
       type="text" 
       placeholder="Enter your username..."
       onChange={e=>setName(e.target.value)}
       />
       <label className='label'>Email</label>
       <input className="registerInput required" 
+      required
        type="text"
        placeholder="Enter your email..."
        onChange={e=>setEmail(e.target.value)}
       />
       <label className='label'>Password</label>
       <input className="registerInput required" 
+      required
       type="password" 
       placeholder="Enter your password..."
       onChange={e=>setPassword(e.target.value)}
