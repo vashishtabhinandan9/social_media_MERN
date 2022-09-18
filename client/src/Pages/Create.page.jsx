@@ -8,14 +8,10 @@ const Modal=()=> {
   
   return (
     <>
-
-    
       <div className='modal w-full h-full m-auto rounded-lg  bg-proj-50 '>
       <h1 className='heading  font-bold text-2xl text-center p-4 border-b-2 border-gray-200'>Create New post</h1>
-      
       <form className="Form my-2 mt-4 flex flex-col items-center  gap-4 " >
      
-      
        { !file && 
         (<div className='icon w-52 h-52 grid  place-content-center'>
         <div className='w-full h-full  text-8xl'><BsImage/></div> 
