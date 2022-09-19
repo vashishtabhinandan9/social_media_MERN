@@ -93,7 +93,7 @@ const signin=(req,res)=>{
             if (isAuthenticated) {
 
                 const token = jwt.sign({_id:savedUser._id},process.env.JWT_SECRET_KEY)
-                const {_id,name,email,followers,following,pic} = savedUser
+                const {_id,name,email,followers,following,pic} = savedUser//destructurin the saveduser
                 return res.json({token,user:{_id,name,email,followers,following,pic}})
                  /**
                  * Generally to generate token we pass hte mongodb_id. 
