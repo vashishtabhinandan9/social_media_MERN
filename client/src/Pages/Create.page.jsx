@@ -1,16 +1,50 @@
 import React from 'react'
 import { useState } from 'react';
 import {BsImage} from 'react-icons/bs'
+import { Link,useNavigate } from 'react-router-dom'
+
+
 
 const Modal=()=> {
   
-  const [file,setFile]=useState(null);
-  
+  const [file,setFile]=useState(null);//this is for diaplaying postpicture or to dipaly icon
+  //when no pic selected shows icon when selected shows picture
+  const posttocloudinary = ()=>{
+    console.log(file)//this is o see what is being sent
+    const data = new FormData()
+    data.append("file",file)//this is the image file we are trying to send
+    data.append("upload_preset","socialmedia")//this is the preset we are uploading to 
+    //you can see above we have given name upload preset
+    data.append("cloud_name","dqwkrd0xd")//this is our cloud name 
+    fetch("https://api.cloudinary.com/v1_1/dqwkrd0xd/image/upload",{
+        method:"post",
+        body:data
+    })
+    .then(res=>res.json())//this is the response we have got we convert it to json bu res.json()
+    .then(data=>{
+      console.log(data)
+       setUrl(data.url)
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+
+ 
+}
+
+
+ 
+  const navigate = useNavigate();
+  //const history = useHistory()
+  const [title,setTitle] = useState("")
+  const [body,setBody] = useState("")
+  const [image,setImage] = useState("")
+  const [url,setUrl] = useState("")
   return (
     <>
       <div className='modal w-full h-full m-auto rounded-lg  bg-proj-50 '>
       <h1 className='heading  font-bold text-2xl text-center p-4 border-b-2 border-gray-200'>Create New post</h1>
-      <form className="Form my-2 mt-4 flex flex-col items-center  gap-4 " >
+      <form className="Form my-2 mt-4 flex flex-col items-center  gap-4 ">
      
        { !file && 
         (<div className='icon w-52 h-52 grid  place-content-center'>
@@ -32,6 +66,8 @@ const Modal=()=> {
           type="text"    
           placeholder='Title'           
           className="postheading w-8/12 mx-auto border-b-2 border-gray-500 focus:outline-none focus:border-blue-500 "                
+          onChange={(e)=>e.setTitle(e.target.value)}
+        
        />  
       
        
@@ -41,6 +77,7 @@ const Modal=()=> {
           type="text"      
           placeholder='Write a caption'
           className="postcaption w-8/12 mx-auto  border-b-2 border-gray-500 focus:outline-none focus:border-blue-500"                
+          onChange={(e)=>e.setBody(e.target.value)}
        />  
        
        
@@ -54,15 +91,24 @@ const Modal=()=> {
       hover:file:bg-blue-500"
       onChange={
         
-        (e) => {if(e.target.files.length !== 0){setFile(e.target.files[0])}}}
+        (e) => {if(e.target.files.length !== 0){  setFile(e.target.files[0])}
+        
+        //console.log(e.target.files[0]);
+        //console.log(file)
+      
+      }}
+        //when user selects a file and number of fiels selcted are not 0 then setfile =file selected
       
       
       />
    </div>
-    
-  
 
-        
+
+   <button  type='button'
+   onClick={posttocloudinary}
+    className="border-2 my-2 w-20 rounded-full text-white cursor-pointer p-2 bg-blue-400  hover:drop-shadow-xl hover:bg-blue-500 ">
+                POST
+    </button> 
       </form>
       </div>
 
