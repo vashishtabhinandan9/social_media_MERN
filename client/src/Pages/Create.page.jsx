@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import {BsImage} from 'react-icons/bs'
 import { Link,useNavigate } from 'react-router-dom'
 import axios from 'axios';
@@ -22,8 +22,54 @@ const Modal=()=> {
     data.append("upload_preset","socialmedia")//this is the preset we are uploading to 
     //you can see above we have given name upload preset
     data.append("cloud_name","dqwkrd0xd")//this is our cloud name 
+
+//######post to server/mongodb 
+//this use effect only gets executed wehn the we get url from another fetch request 
+//once we get url only then this code is executed
+//also as useeffect also executes on  mount so we have done an if condition=> if url is not null only hten the code is execites
+
+    useEffect(()=>{
+      if(url){
+ //######post to server/mongodb 
+
+ try {
+  const res= axios.post("createpost",{
+      title,
+      body,
+      "pic":url
+    },
+    {
+      headers: {
+        "Content-Type":"application/json",
+        "Authorization": 'bearer'+" "+localStorage.getItem("jwt") //as you are seperating token from beraerby 
+      }});
+
+    if(res){//
+      /*see how to implement this toast message on navigation
+      toast.success(res.data.message,{
+        theme: "colored",
+        hideProgressBar: true,
+        autoClose: 3000,
+      onClose:()=>{},
+       });
+       */
+      console.log("post  created scuucesfull")
+      navigate("/")
+      
+    }
+    else{
+      console.log(res.error)
+    }
+    
+  } catch (error) {
+    //console.log(error)
+    console.log(error.response.data)
+  }
+
+      }
+    },{url})
    
-   //post to cloudinary
+   //#####post to cloudinary
     fetch("https://api.cloudinary.com/v1_1/dqwkrd0xd/image/upload",{
         method:"post",
         body:data
@@ -37,41 +83,7 @@ const Modal=()=> {
         console.log(err)
     })
 
-    //post to server/mongodb
-
-    try {
-    const res= await axios.post("createpost",{
-        title,
-        body,
-        "pic":url
-      },
-      {
-        headers: {
-          "Content-Type":"application/json",
-          "Authorization": 'bearer'+" "+localStorage.getItem("jwt") //as you are seperating token from beraerby 
-        }});
-
-      if(res){//
-        /*see how to implement this toast message on navigation
-        toast.success(res.data.message,{
-          theme: "colored",
-          hideProgressBar: true,
-          autoClose: 3000,
-        onClose:()=>{},
-         });
-         */
-        console.log("post  created scuucesfull")
-        navigate("/")
-      }
-      else{
-        console.log(res.error)
-      }
-      
-    } catch (error) {
-      //console.log(error)
-      console.log(error.response.data)
-    }
-
+   
  
 }
 
