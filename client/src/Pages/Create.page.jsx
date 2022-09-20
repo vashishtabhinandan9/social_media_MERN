@@ -44,7 +44,12 @@ const Modal=()=> {
         title,
         body,
         "pic":url
-      });
+      },
+      {
+        headers: {
+          "Content-Type":"application/json",
+          "Authorization": 'bearer'+" "+localStorage.getItem("jwt") //as you are seperating token from beraerby 
+        }});
 
       if(res){//
         /*see how to implement this toast message on navigation

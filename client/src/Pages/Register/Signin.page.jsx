@@ -28,6 +28,7 @@ export default function Signin(){
           method:"post",
           headers:{
               "Content-Type":"application/json"
+              
           },
           body:JSON.stringify({
               password,
