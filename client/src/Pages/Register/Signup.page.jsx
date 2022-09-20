@@ -3,6 +3,9 @@ import { useState } from 'react'
 import { Link,useNavigate} from 'react-router-dom'
 import "./Signup.page.css"
 import axios, { AxiosError } from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import {Toastcontext} from '../../Config/toast.config'
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function Signup(){
@@ -21,12 +24,17 @@ const  handleSubmit=async(e)=>{
 
 
   if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
-    console.log("invalid email due to regex ")//   
-    // M.toast({html: "invalid email",classes:"#c62828 red darken-3"})
+    console.log("invalid email due to regex ")// 
+    
+    toast.error("E-mail is not valid",{
+      theme: "colored",
+      hideProgressBar: true,
+      autoClose: 3000
+     })  
     return
 }
 
- try {
+  try {
   const res=await axios.post("/signup",{
     name,
     email,
@@ -40,18 +48,32 @@ const  handleSubmit=async(e)=>{
     // field inside data then you have to do res.data.fieldname
     console.log(res)
     console.log("hello")
+    /**
+     * https://blog.logrocket.com/using-react-toastify-style-toast-messages/
+     * study toast promise from here
+     */
    navigate("/signin")
+   toast.success(res.data.message,{
+    theme: "colored",
+    hideProgressBar: true,
+    autoClose: 3000,
+  onClose:()=>{},
+   });
   }
   else {//this else bolck is useless as when error occurs it goes to catch block
+    //so in case of try and catchblock  if erroe occurs then it will be caugth by catch block always
     console.log(res.error)
-    //pop up message that signup invalid
-    //res.error=>this is the user message put it in animation
+    //res.error=>this is the user messsage put it in animation
   }
  } catch (error) {
   console.log("inside catch")
   console.log(error)
   console.log(error.response.data)//this is the message which coems when error occurs// put this in animation
-  //put 
+  toast.error(error.response.data.error,{
+    theme: "colored",
+    hideProgressBar: true,
+    autoClose: 3000,
+   })
   //pop up message that signup invalid
     //error.response.data=>this is the user message put it in animation
  }
@@ -94,6 +116,8 @@ return(
            <Link to="/signin"><span className='ml-2' style={{color:"rgb(23, 159, 247)"}}>Log in</span></Link> 
         </div>
       </div>
+
+      <ToastContainer/>
     
     </>
   )  

@@ -46,7 +46,15 @@ const Modal=()=> {
         "pic":url
       });
 
-      if(res){
+      if(res){//
+        /*see how to implement this toast message on navigation
+        toast.success(res.data.message,{
+          theme: "colored",
+          hideProgressBar: true,
+          autoClose: 3000,
+        onClose:()=>{},
+         });
+         */
         console.log("post  created scuucesfull")
         navigate("/")
       }

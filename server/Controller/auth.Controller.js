@@ -19,7 +19,7 @@ const signup=(req,res)=>{
     User.findOne({email:email})
     .then((savedUser)=>{
         if(savedUser){
-          return res.status(422).json({error:"user already exists with that email"})
+          return res.status(422).json({error:"user already exists with this email"})
         }
         const saltround=12;
         bcrypt.hash(password,saltround)
@@ -42,7 +42,7 @@ const signup=(req,res)=>{
 
                    return res.json({
                     success: true,
-                    message:"saved successfully",
+                    message:"Successfull Signup",
                     data: user
                         
                 })
@@ -113,7 +113,7 @@ const signin=(req,res)=>{
         //    console.log("false");
             return res.json({
                 success: false,
-                message: "User Email Does not exist."
+                message: "User E-mail does not exist."
             });
         }
     })

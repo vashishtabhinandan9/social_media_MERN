@@ -3,7 +3,9 @@ import React from 'react'
 import { Link,useNavigate } from 'react-router-dom'
 import "./Signin.page.css"
 import { useState } from 'react'
-
+import { ToastContainer, toast } from 'react-toastify';
+import {Toastcontext} from '../../Config/toast.config'
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Signin(){
 
@@ -14,6 +16,10 @@ export default function Signin(){
     e.preventDefault();//this prevent the default code
       if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
          // M.toast({html: "invalid email",classes:"#c62828 red darken-3"})
+         toast.error("E-mail is not valid",{
+          theme: "colored",
+          autoClose: 3000,
+         })
          console.log("invalid email due to regex ")//    
          return
       }
@@ -37,10 +43,16 @@ export default function Signin(){
             // dispatch({type:"USER",payload:data.user})
             navigate('/')
             console.log("suucesfull signin") 
+
           }
-          else{
+          else{//this executes when data send by us does not match the data of the user in database
             console.log(data.error)
             console.log(data.message)
+            toast.error(data.message,{
+              theme: "colored",
+              autoClose: 3000,
+             })
+
             //M.toast({html: data.error,classes:"#c62828 red darken-3"})
           }
           {/**
@@ -59,7 +71,8 @@ export default function Signin(){
          }
         */}
          
-      }).catch(err=>{
+      }).catch(err=>{//this gets executed when there is some error is in code or network 
+        console.log("inside catch")
           console.log(err)
       })
   }
@@ -97,6 +110,8 @@ return(
         <Link to="/"><span>Forgot password? </span> </Link> 
         </span>
       </div>
+
+      <ToastContainer hideProgressBar/>
     
     </>
   )  
