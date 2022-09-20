@@ -2,20 +2,28 @@ import React from 'react'
 import { useState } from 'react';
 import {BsImage} from 'react-icons/bs'
 import { Link,useNavigate } from 'react-router-dom'
-
+import axios from 'axios';
+import { axiosInstance } from "../Config/axiosinstance.config";
 
 
 const Modal=()=> {
-  
+  const navigate = useNavigate();
+  //const history = useHistory()
+  const [title,setTitle] = useState("")
+  const [body,setBody] = useState("")
+  //const [image,setImage] = useState("")
+  const [url,setUrl] = useState("")
   const [file,setFile]=useState(null);//this is for diaplaying postpicture or to dipaly icon
   //when no pic selected shows icon when selected shows picture
-  const posttocloudinary = ()=>{
+  const postDetails = async ()=>{
     console.log(file)//this is o see what is being sent
     const data = new FormData()
     data.append("file",file)//this is the image file we are trying to send
     data.append("upload_preset","socialmedia")//this is the preset we are uploading to 
     //you can see above we have given name upload preset
     data.append("cloud_name","dqwkrd0xd")//this is our cloud name 
+   
+   //post to cloudinary
     fetch("https://api.cloudinary.com/v1_1/dqwkrd0xd/image/upload",{
         method:"post",
         body:data
@@ -29,17 +37,34 @@ const Modal=()=> {
         console.log(err)
     })
 
+    //post to server/mongodb
+
+    try {
+    const res= await axios.post("createpost",{
+        title,
+        body,
+        "pic":url
+      });
+
+      if(res){
+        console.log("post  created scuucesfull")
+        navigate("/")
+      }
+      else{
+        console.log(res.error)
+      }
+      
+    } catch (error) {
+      //console.log(error)
+      console.log(error.response.data)
+    }
+
  
 }
 
 
  
-  const navigate = useNavigate();
-  //const history = useHistory()
-  const [title,setTitle] = useState("")
-  const [body,setBody] = useState("")
-  const [image,setImage] = useState("")
-  const [url,setUrl] = useState("")
+ 
   return (
     <>
       <div className='modal w-full h-full m-auto rounded-lg  bg-proj-50 '>
@@ -66,7 +91,7 @@ const Modal=()=> {
           type="text"    
           placeholder='Title'           
           className="postheading w-8/12 mx-auto border-b-2 border-gray-500 focus:outline-none focus:border-blue-500 "                
-          onChange={(e)=>e.setTitle(e.target.value)}
+          onChange={(e)=>setTitle(e.target.value)}
         
        />  
       
@@ -77,7 +102,7 @@ const Modal=()=> {
           type="text"      
           placeholder='Write a caption'
           className="postcaption w-8/12 mx-auto  border-b-2 border-gray-500 focus:outline-none focus:border-blue-500"                
-          onChange={(e)=>e.setBody(e.target.value)}
+          onChange={(e)=>setBody(e.target.value)}
        />  
        
        
@@ -105,7 +130,7 @@ const Modal=()=> {
 
 
    <button  type='button'
-   onClick={posttocloudinary}
+   onClick={postDetails}
     className="border-2 my-2 w-20 rounded-full text-white cursor-pointer p-2 bg-blue-400  hover:drop-shadow-xl hover:bg-blue-500 ">
                 POST
     </button> 

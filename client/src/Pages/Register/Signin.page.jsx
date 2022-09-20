@@ -31,9 +31,10 @@ export default function Signin(){
       .then(data=>{
           console.log(data)
           if(data.user){
-             //  localStorage.setItem("jwt",data.token)
-           //  localStorage.setItem("user",JSON.stringify(data.user))
-           //  dispatch({type:"USER",payload:data.user})
+            console.log()
+             localStorage.setItem("jwt",data.token)
+             localStorage.setItem("user",JSON.stringify(data.user))
+            // dispatch({type:"USER",payload:data.user})
             navigate('/')
             console.log("suucesfull signin") 
           }
