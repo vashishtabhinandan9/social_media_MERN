@@ -2,13 +2,14 @@
 import React from 'react'
 import { Link,useNavigate } from 'react-router-dom'
 import "./Signin.page.css"
-import { useState } from 'react'
+import { useState,useContext } from 'react'
+import { UserContext } from '../../Context/context'
 import { ToastContainer, toast } from 'react-toastify';
 import {Toastcontext} from '../../Config/toast.config'
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Signin(){
-
+  const [state,dispatch]=useContext(UserContext)
   const navigate = useNavigate();
   const [password,setPassword] = useState("")
   const [email,setEmail] = useState("")
@@ -41,7 +42,7 @@ export default function Signin(){
             console.log()
              localStorage.setItem("jwt",data.token)
              localStorage.setItem("user",JSON.stringify(data.user))
-            // dispatch({type:"USER",payload:data.user})
+             dispatch({type:"USER",payload:data.user})
             navigate('/')
             console.log("suucesfull signin") 
 

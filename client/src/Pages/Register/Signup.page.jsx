@@ -36,9 +36,10 @@ const  handleSubmit=async(e)=>{
 
   try {
   const res=await axios.post("/signup",{
-    name,
-    email,
-    password
+    name,//when key and value are equal we can just use one
+   // like it should be name:name but we have only done "name"
+    email,//email:email
+    password//password:password
   });
 
   if(res.data){

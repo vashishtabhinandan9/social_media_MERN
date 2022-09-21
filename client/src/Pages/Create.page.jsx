@@ -82,14 +82,8 @@ const Modal=()=> {
     .catch(err=>{
         console.log(err)
     })
-
-   
- 
 }
 
-
- 
- 
   return (
     <>
       <div className='modal w-full h-full m-auto rounded-lg  bg-proj-50 '>
